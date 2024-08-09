@@ -24,8 +24,7 @@ async function loadCharacters(url) {
     const responseJson = await response.json();
 
     console.log(responseJson);
-    responseJson.results.forEach((character, id) => {
-      console.log(id);
+    responseJson.results.forEach((character) => {
       const card = document.createElement("div");
       card.style.backgroundImage = `url("https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g,"")}.jpg")`;
       card.className = "cards";
@@ -44,7 +43,7 @@ async function loadCharacters(url) {
         const modal = document.getElementById("modal");
         modal.style.visibility = "visible";
 
-        const modalContent = document.createElementById("modal-content");
+        const modalContent = document.getElementById("modal-content");
         modalContent.innerHTML = "";
 
         const characterImage = document.createElement("div");
@@ -138,14 +137,14 @@ function convertEyeColor(eyeColor) {
     red: "vermelho",
     orange: "laranja",
     hazel: "avelã",
-    blue,gray: "cinza azulado",
-    red, blue: "vermelho, azul",
+    "blue,gray": "cinza azulado",
+    "red, blue": "vermelho, azul",
     gold: "dourado",
-    green, yellow: "verde, amarelo",
+    "green, yellow": "verde, amarelo",
     white: "branco",
     unknown: "desconhecido",
   };
-  return cores [eyeColor.tolowerCase()] || eyeColor;
+  return cores [eyeColor.toLowerCase()] || eyeColor;
 }
 
 function convertHeight (height) {
